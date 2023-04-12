@@ -42,8 +42,10 @@ public class ClientConnectServerThread extends Thread{
                     }
                 } else if (message.getMsgType().equals(MessageType.MESSAGE_COMM_MES)) {
                     System.out.println("用户 " + message.getSender() + " 对用户 " + message.getGetter() + " 说：" + message.getContent());
+                } else if (message.getMsgType().equals(MessageType.MESSAGE_TO_ALL_MES)) {
+                    System.out.println("用户 " + message.getSender() + " 对大家说 " + message.getContent());
                 } else {
-                    System.out.println("读取到的是其他类型的message，暂时不做处理...");
+                    System.out.println("是其他类型的message，暂时不处理...");
                 }
 
             } catch (Exception e) {

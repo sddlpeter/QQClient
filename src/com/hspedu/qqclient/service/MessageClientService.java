@@ -26,4 +26,21 @@ public class MessageClientService {
         }
 
     }
+
+    public void sendMessageToAll(String content, String senderId) {
+        Message message = new Message();
+        message.setMsgType(MessageType.MESSAGE_TO_ALL_MES);
+        message.setSender(senderId);
+        message.setContent(content);
+        message.setSentTime(new Date().toString());
+
+        System.out.println(senderId + " 对大家说 " + content);
+
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(ManageClientConnectServerThread.getClientConnectServerThread(senderId).getSocket().getOutputStream());
+            oos.writeObject(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

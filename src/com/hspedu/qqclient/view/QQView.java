@@ -59,6 +59,9 @@ public class QQView {
                                     break;
                                 case "2":
                                     System.out.println("群发消息");
+                                    System.out.println("请输入想说的话：");
+                                    String contentToGroup = Utility.readString(100);
+                                    messageClientService.sendMessageToAll(contentToGroup, userId);
                                     break;
                                 case "3":
                                     System.out.println("私聊消息");
@@ -89,7 +92,5 @@ public class QQView {
                     break;
             }
         }
-
-
     }
 }
