@@ -1,17 +1,20 @@
 package com.hspedu.qqclient.view;
 
+import com.hspedu.qqclient.service.FileClientService;
 import com.hspedu.qqclient.service.ManageClientConnectServerThread;
 import com.hspedu.qqclient.service.MessageClientService;
 import com.hspedu.qqclient.service.UserClientService;
 import com.hspedu.qqclient.utils.Utility;
 
 import javax.swing.*;
+import java.io.File;
 
 public class QQView {
     private boolean loop = true; // 控制是否显示菜单
     private String key = "";  // 接收用户的键盘输入
     private UserClientService userClientService = new UserClientService(); // 用于登录服务器，注册用户
     private MessageClientService messageClientService = new MessageClientService();
+    private FileClientService fileClientService = new FileClientService();
 
     public static void main(String[] args) {
         new QQView().mainMenu();
@@ -74,6 +77,13 @@ public class QQView {
                                     break;
                                 case "4":
                                     System.out.println("发送文件");
+                                    System.out.println("请输入你想把文件发送给的用户（在线用户）：");
+                                    getterId = Utility.readString(50);
+                                    System.out.println("请输入发送文件的路径：");
+                                    String src = Utility.readString(100);
+                                    System.out.println("请输入把文件发送到对应的路径：");
+                                    String dest = Utility.readString(100);
+                                    fileClientService.sendFileToOne(src, dest, userId, getterId);
                                     break;
                                 case "9":
                                     loop = false;
