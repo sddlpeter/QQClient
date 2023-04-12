@@ -22,8 +22,6 @@ public class UserClientService {
         u.setUserId(userId);
         u.setPassword(pwd);
 
-
-
         try {
             // 链接到服务端，发送u对象
             socket = new Socket(InetAddress.getByName("10.0.0.218"), 9999);

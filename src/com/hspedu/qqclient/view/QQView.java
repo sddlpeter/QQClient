@@ -73,7 +73,6 @@ public class QQView {
                                     System.out.println("请输入想说的话：");
                                     String content = Utility.readString(100);
                                     messageClientService.sendMessageToOne(content, userId, getterId);
-                                    // userClientService.sendMessage(getterId, content);
                                     break;
                                 case "4":
                                     System.out.println("发送文件");
